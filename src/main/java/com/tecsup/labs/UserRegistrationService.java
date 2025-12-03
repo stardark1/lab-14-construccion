@@ -17,7 +17,7 @@ public final class UserRegistrationService {
     /**
      * Lista para almacenar los usuarios registrados.
      */
-    private List users = new ArrayList();
+    private List<String> users = new ArrayList<>();
 
     /**
      * Longitud mínima requerida para la contraseña.
@@ -26,13 +26,9 @@ public final class UserRegistrationService {
 
     /**
      * Constructor por defecto.
-     * Inicializa la lista de usuarios si es necesario.
      */
     public UserRegistrationService() {
         System.out.println("Constructor llamado");
-        if (users == null) {
-            users = new ArrayList();
-        }
     }
 
     /**
@@ -55,7 +51,8 @@ public final class UserRegistrationService {
     public boolean registerUser(final String username,
                                 final String password,
                                 final String email) {
-        if (username.trim().isEmpty()) {
+
+        if (username == null || username.trim().isEmpty()) {
             lastErrorMessage = "El nombre de usuario está vacío.";
             return false;
         }
@@ -67,18 +64,18 @@ public final class UserRegistrationService {
             lastErrorMessage = "La contraseña es muy corta.";
             return false;
         }
-        if (password.length() < MIN_PASSWORD_LENGTH) {
-            System.out.println("Advertencia: contraseña corta.");
-        }
-        if (!email.contains("@") && !email.contains(".")) {
+        if (email == null || !email.contains("@") || !email.contains(".")) {
             lastErrorMessage = "El correo electrónico no parece válido.";
+            return false;
         }
+
         try {
             saveUser(username, password, email);
         } catch (Exception e) {
             lastErrorMessage = "Error desconocido al guardar el usuario.";
             return false;
         }
+
         System.out.println("Usuario registrado: " + username);
         return true;
     }
@@ -94,10 +91,12 @@ public final class UserRegistrationService {
     private void saveUser(final String username,
                           final String password,
                           final String email) throws Exception {
-        users.add(username);
-        if (username.equals("error")) {
+
+        if ("error".equals(username)) {
             throw new Exception("Nombre de usuario no permitido.");
         }
+
+        users.add(username);
     }
 
     /**
@@ -117,3 +116,4 @@ public final class UserRegistrationService {
         return result.length();
     }
 }
+
