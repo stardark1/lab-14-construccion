@@ -7,7 +7,8 @@ package com.tecsup.labs;
 public final class Main {
 
     /**
-     * Constructor privado para evitar la instanciación de esta clase utilitaria.
+     * Constructor privado para evitar la instanciación
+     * de esta clase utilitaria.
      */
     private Main() {
         // Evitar instanciación
@@ -31,12 +32,12 @@ public final class Main {
         } catch (Exception e) {
             System.out.println("Excepción: " + e.getMessage());
         }
-        // Cortamos la línea larga aquí
-        System.out.println("Mensaje: "
-                + service.getLastErrorMessage());
+
+        System.out.println("Mensaje: " + service.getLastErrorMessage());
 
         // 3. Probamos el caso que fuerza una excepción
         service.registerUser("error", "12345678", "error@correo.com");
         System.out.println("Mensaje: " + service.getLastErrorMessage());
     }
 }
+
