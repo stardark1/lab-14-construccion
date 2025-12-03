@@ -31,7 +31,9 @@ public final class Main {
         } catch (Exception e) {
             System.out.println("Excepción: " + e.getMessage());
         }
-        System.out.println("Mensaje: " + service.getLastErrorMessage());
+        // Cortamos la línea larga aquí
+        System.out.println("Mensaje: "
+                + service.getLastErrorMessage());
 
         // 3. Probamos el caso que fuerza una excepción
         service.registerUser("error", "12345678", "error@correo.com");
