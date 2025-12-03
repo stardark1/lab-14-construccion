@@ -3,8 +3,8 @@ package com.tecsup.labs;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRegistrationService {
-    // CORRECCIÓN: Ahora es private
+public final class UserRegistrationService {
+    // CORRECCIÓN: Variable privada
     private String lastErrorMessage = "";
 
     // Mala práctica: lista sin genéricos
@@ -19,12 +19,13 @@ public class UserRegistrationService {
         }
     }
 
-    // CORRECCIÓN: Método Getter agregado para acceder al mensaje
+    // CORRECCIÓN: Método Getter
     public String getLastErrorMessage() {
         return lastErrorMessage;
     }
 
-    public boolean registerUser(String username, String password, String email) {
+    // CORRECCIÓN: Parámetros final
+    public boolean registerUser(final String username, final String password, final String email) {
         if (username.trim().isEmpty()) {
             lastErrorMessage = "El nombre de usuario está vacío.";
             return false;
@@ -53,14 +54,16 @@ public class UserRegistrationService {
         return true;
     }
 
-    private void saveUser(String username, String password, String email) throws Exception {
+    // CORRECCIÓN: Parámetros final
+    private void saveUser(final String username, final String password, final String email) throws Exception {
         users.add(username);
         if (username.equals("error")) {
             throw new Exception("Nombre de usuario no permitido.");
         }
     }
 
-    public int x(String s) {
+    // CORRECCIÓN: Parámetros final
+    public int x(final String s) {
         if (s == null) {
             return -1;
         }

@@ -6,7 +6,6 @@ public class Main {
 
         // 1. Probamos con contraseña muy corta
         service.registerUser("juan", "123", "juan@correo");
-        // CORRECCIÓN: Usamos el getter
         System.out.println("Mensaje: " + service.getLastErrorMessage());
 
         // 2. Probamos con username null
@@ -15,12 +14,10 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Excepción atrapada en main: " + e.getMessage());
         }
-        // CORRECCIÓN: Usamos el getter
         System.out.println("Mensaje: " + service.getLastErrorMessage());
 
         // 3. Probamos el caso que fuerza una excepción
         service.registerUser("error", "12345678", "error@correo.com");
-        // CORRECCIÓN: Usamos el getter
         System.out.println("Mensaje: " + service.getLastErrorMessage());
     }
 }
