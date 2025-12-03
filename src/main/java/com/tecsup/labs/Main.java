@@ -31,7 +31,7 @@ public final class Main {
         } catch (Exception e) {
             System.out.println("Excepción: " + e.getMessage());
         }
-        // Cortamos la línea larga aquí
+        // Cortamos
         System.out.println("Mensaje: "
                 + service.getLastErrorMessage());
 
