@@ -37,7 +37,7 @@ public final class Main {
                 "Mensaje: " + service.getLastErrorMessage()
         );
 
-        // 3. Probamos el caso que fuerza una excepción
+        // 3. Probamos el caso que fuerza una
         service.registerUser("error", "12345678", "error@correo.com");
         System.out.println("Mensaje: " + service.getLastErrorMessage());
     }
